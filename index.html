@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTwinzz - Advanced Medical Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        *, *:after, *:before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            background: white;
+            color: #1a1a1a; /* Changed to premium black */
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: white;
+            color: #1a1a1a; /* Changed to premium black */
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a1a1a; /* Changed to premium black */
+        }
+
+        .logo span {
+            color: #3d94ec;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #1a1a1a; /* Changed to premium black */
+            text-decoration: none;
+            font-size: 15.5px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #000000; /* Made darker on hover */
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: #1a1a1a; /* Changed to premium black */
+            border: 1px solid #1a1a1a; /* Changed border color */
+        }
+
+        .btn-login:hover {
+            background-color: #f0f0f0; /* Made hover color neutral */
+        }
+
+        .btn-signup {
+            background-color: #1a1a1a; /* Changed to premium black */
+            color: white;
+            border: 1px solid #1a1a1a; /* Changed border color */
+        }
+
+        .btn-signup:hover {
+            background-color: #000000; /* Darker on hover */
+        }
+
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 74px);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem 2rem 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 50%;
+        }
+
+        .animation-container {
+            position: absolute;
+            right: 5%;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #1a1a1a; /* Changed to premium black */
+        }
+
+        .hero-heading span {
+            color: #9587ea;
+        }
+
+        .hero-subheading {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a; /* Changed to premium black */
+            max-width: 550px;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background-color: #1a1a1a; /* Changed to premium black */
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #000000; /* Darker on hover */
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #1a1a1a; /* Changed to premium black */
+            border: 1px solid #1a1a1a; /* Changed border color */
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0f0f0; /* Made hover color neutral */
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #f0f0f0; /* Changed background color */
+            color: #1a1a1a; /* Changed to premium black */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* DNA Animation Styles */
+        .dna {
+            height: 65vmin;
+            aspect-ratio: 2/5;
+            display: grid;
+            transform-style: preserve-3d;
+            transform: rotate(45deg);
+            gap: 0.5vmin;
+        }
+
+        .strand {
+            --speed: 1;
+            --delay: 0s;
+            width: 100%;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .strand__container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .strand__line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: #6A0DAD; /* Changed to premium black */
+            transform: translateY(-50%);
+            transform-origin: center;
+            border: 0.5vmin solid #000000; /* Changed border color */
+        }
+
+        .strand__node {
+            background: var(--bg, white);
+            width: 4.5vmin;
+            height: 4.5vmin;
+            border-radius: 50%;
+            border: 0.5vmin solid #000000; /* Changed border color */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .strand__node--left {
+            left: -2.25vmin;
+        }
+
+        .strand__node--right {
+            right: -2.25vmin;
+        }
+
+        .mission-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 10vh;
+            position: relative;
+        }
+
+        .mission-text {
+            max-width: 45%;
+            color: #1a1a1a; /* Changed to premium black */
+            opacity: 0;
+            transform: translateY(180px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .mission-heading {
+            font-size: 2.25rem;
+            color: #1a1a1a; /* Changed to premium black */
+            margin-bottom: 1rem;
+            transition-delay: 0.1s;
+        }
+        .mission-text.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+        /* Blue highlight for important words */
+        .blue-highlight {
+            color: #9587ea; /* Changed to premium black */
+            font-weight: 600;
+        }
+
+        .mission-subheading {
+            font-size: 1.1rem;
+            color: #1a1a1a; /* Changed to premium black */
+            margin-bottom: 2rem;
+            transition-delay: 0.3s;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between; /* This will space out the items evenly */
+        }
+
+        .stat-item {
+            text-align: center;
+            width: calc(50% - 1rem); /* Make each item take up roughly half the width minus gap */
+        }
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                width: 100%; /* Full width on mobile */
+            }
+        }
+
+        /* Animation styles for the counters */
+        .stat-number {
+            font-size: 3rem;
+            color: #1a1a1a; /* Changed to premium black */
+            font-weight: 795;
+            position: relative;
+            display: inline-block;
+            visibility: hidden; /* Hide initially until JS runs */
+        }
+        
+        .stat-number.animated {
+            visibility: visible;
+        }
+        
+        /* For better user experience on page scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #1a1a1a; /* Changed to premium black */
+        }
+
+        /* Circle container - shifted to right */
+        .circle-container {
+            position: relative;
+            width: 45%;
+            display: flex;
+            justify-content: center; /* Changed from flex-end to center */
+            align-items: center;
+            margin-right: .1%; /* Added margin-right instead of aligning to the end */
+        }
+
+        /* And for the circle itself */
+        .process-circle {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-right: 0;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: transform 1s ease, opacity 1s ease;
+        }
+
+        .process-circle.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .process-ring {
+            position: absolute;
+            top: -25%;
+            left: -25%;
+            width: 150%;
+            height: 150%;
+            border: 2px solid #1a1a1a; /* Changed border color */
+            border-radius: 50%;
+            transform-origin: center;
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .process-ring.active {
+            opacity: 1;
+        }
+
+        .process-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #9587ea; /* Changed to premium black */
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .process-point.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        .process-point::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.3); /* Changed background color */
+            border-radius: 50%;
+            transform: scale(1.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1.5); opacity: 0.7; }
+            70% { transform: scale(2.5); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Repositioned labels to be on the circle's circumference */
+        .process-label {
+            position: absolute;
+            color: #1a1a1a; /* Changed to premium black */
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 5px 10px;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .process-label.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .video-section {
+            max-width: 100%; /* Changed from 1400px to 100% for full width */
+            margin: 2rem auto 5rem;
+            padding: 0; /* Removed padding to allow full width */
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 95%; /* Changed from 1200px to 100% for full width */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(205px);
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+        }
+
+        /* Active state - when scrolled into view */
+        .video-wrapper.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Video container with increased aspect ratio */
+        .video-container-inner {
+            position: relative;
+            width: 100%;
+            padding-top: 40%; /* Changed from 50% to 40% for wider aspect ratio */
+            background: transparent;
+        }
+
+        /* Updated style for video element with fade-in animation */
+        #videoPlayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+            object-fit: cover; /* Ensures video fills the container properly */
+        }
+
+        /* Fade-in animation for the video */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .video-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            padding: 0 5%; /* Added padding to the features section for better spacing */
+        }
+
+        .video-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .feature-icon-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(149, 135, 234, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Optional: Add a slight scale effect for more pop */
+        @keyframes popScale {
+            0% { transform: translateY(100px) scale(0.9); opacity: 0; }
+            70% { transform: translateY(-10px) scale(1.02); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        /* Apply this animation when the .pop-animation class is added */
+        .video-wrapper.pop-animation {
+            animation: popScale 1.2s ease-out forwards;
+        }
+
+        /* Responsive Adjustments - updated to maintain larger size on medium screens */
+        @media (max-width: 768px) {
+            .video-wrapper {
+                max-width: 100%;
+            }
+            
+            .video-container-inner {
+                padding-top: 60%; /* Adjusted aspect ratio for mobile */
+            }
+            
+            .video-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="cursor: pointer;">Medi<span style="color: #9587ea;">Twinz</span></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-login">Sign Up</button>
+                <button class="btn btn-signup">Log In</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Left Side Content -->
+        <div class="content">
+            <h1 class="hero-heading">Advanced <span>DNA Analysis</span> for Better Healthcare</h1>
+            <p class="hero-subheading">
+                MediScan provides cutting-edge genomic testing and AI analysis for precise diagnosis and personalized treatment plans.
+            </p>
+            <div class="cta-container">
+                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <p>Comprehensive DNA Sequencing</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <p>AI-Powered Medical Diagnostics</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <p>Personalized Treatment Recommendations</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Animation (Fixed position) -->
+        <div class="animation-container">
+            <div class="dna" style="--total: 13">
+                <!-- Strands will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="mission-section">
+        <div class="mission-text">
+            <h2 class="mission-heading">
+                Our <span class="blue-highlight">Mission</span> is to unravel the intricacies of your genetic code, providing you with the most 
+                detailed diagnostic insights.
+            </h2>
+            <p class="mission-subheading">
+                MediScan's <span class="blue-highlight">Precision Diagnostics</span>
+            </p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Years Of Expertise</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">47+</div>
+                    <div class="stat-label">Countries In Service</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">73%</div>
+                    <div class="stat-label">Accuracy rate in genetic diagnostics</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">29K+</div>
+                    <div class="stat-label">Satisfied Customers</div>
+                </div>
+            </div>
+        </div>
+        <div class="circle-container">
+            <div class="process-circle">
+                <!-- Rings with dynamic scaling -->
+                
+                <div class="process-ring" style="transform: scale(0.85);"></div>
+                <div class="process-ring" style="transform: scale(0.7);"></div>
+    
+                <!-- Points and labels positioned exactly on the circumference -->
+                <!-- First point - Outer circle -->
+                <div class="process-point" style="top: -13%; left: 52%;">
+                    <div class="process-label" style="top: -45px; left: 0;">
+                        <span class="blue-highlight">Sample</span> Collection
+                    </div>
+                </div>
+    
+                <!-- Second point - Middle circle -->
+                <div class="process-point" style="top: 5%; left: 95%;">
+                    <div class="process-label" style="top: -10px; left: 20px;">
+                        <span class="blue-highlight">DNA</span> Extraction
+                    </div>
+                </div>
+    
+                <!-- Third point - Inner circle -->
+                <div class="process-point" style="top: 50%; left: 102%;">
+                    <div class="process-label" style="top: 0; left: 20px;">
+                        <span class="blue-highlight">Genetic</span> Analysis
+                    </div>
+                </div>
+    
+                <!-- Fourth point - Outer circle -->
+                <div class="process-point" style="top: 95%; left: 95%;">
+                    <div class="process-label" style="top: 15px; left: 20px;">
+                        <span class="blue-highlight">Diagnostic</span> Review
+                    </div>
+                </div>
+    
+                <!-- Fifth point - Middle circle -->
+                <div class="process-point" style="top: 113.5%; left: 50%;">
+                    <div class="process-label" style="top: 20px; left: 0;">
+                        <span class="blue-highlight">Data</span> Interpretation
+                    </div>
+                </div>
+    
+                <!-- Sixth point - Inner circle -->
+                <div class="process-point" style="top: 95%; left: 5%;">
+                    <div class="process-label" style="top: 15px; right: 20px;">
+                        <span class="blue-highlight">Report</span> Generation
+                    </div>
+                </div>
+    
+                <!-- Seventh point - Outer circle -->
+                <div class="process-point" style="top: 50%; left: -2.5%;">
+                    <div class="process-label" style="top: 0; right: 20px;">
+                        <span class="blue-highlight">Clinical</span> Consultation
+                    </div>
+                </div>
+    
+                <!-- Eighth point - Middle circle -->
+                <div class="process-point" style="top: 5%; left: 6%;">
+                    <div class="process-label" style="top: -10px; right: 20px;">
+                        <span class="blue-highlight">Treatment</span> Planning
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-heading fade-in">
+        <h2>The Next Gen of Healthcare - <span class="blue-highlight">MediTwinz</span></h2>
+    </div>
+    
+    <div class="video-section">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <div class="video-container-inner">
+                    <video id="videoPlayer" autoplay loop muted playsinline>
+                        <!-- Update this source to your local video file path -->
+                        <source src="./img/reMed.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="video-features">
+                <div class="video-feature">
+                    <div class="feature-icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#9587ea" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="#9587ea" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <p>5-minute process overview</p>
+                </div>
+                <div class="video-feature">
+                    <div class="feature-icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z" fill="#9587ea"/>
+                        </svg>
+                    </div>
+                    <p>Expert explanations</p>
+                </div>
+                <div class="video-feature">
+                    <div class="feature-icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#9587ea" stroke-width="2"/>
+                            <path d="M2 12H9M15 12H22" stroke="#9587ea" stroke-width="2"/>
+                            <path d="M12 2V9M12 15V22" stroke="#9587ea" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <p>Precision technology showcase</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+<script>
+    // DNA Animation
+    const COLORS = [
+        '#a3c4f3', // Light Blue
+        '#cfbaf0', // Light Purple
+        '#f1c0e8', // Light Pink
+        '#ffffff'  // White
+    ];
+
+    const dna = document.querySelector('.dna');
+    const totalStrands = 13;
+
+    for (let i = 1; i <= totalStrands; i++) {
+        const strand = document.createElement('div');
+        strand.className = 'strand';
+        strand.style.setProperty('--index', i);
+        
+        const container = document.createElement('div');
+        container.className = 'strand__container';
+        
+        const line = document.createElement('div');
+        line.className = 'strand__line';
+        
+        const leftNode = document.createElement('div');
+        leftNode.className = 'strand__node strand__node--left';
+        leftNode.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+        
+        const rightNode = document.createElement('div');
+        rightNode.className = 'strand__node strand__node--right';
+        rightNode.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+        
+        container.appendChild(line);
+        container.appendChild(leftNode);
+        container.appendChild(rightNode);
+        
+        const delay = Math.sin((Math.PI / 180) * 45 * (i / totalStrands));
+        const animationDelay = delay * -1;
+        
+        const animationName = `strand-${i}`;
+        const keyframes = `
+            @keyframes ${animationName} {
+                0%, 100% {
+                    transform: scaleX(1) translateX(0);
+                }
+                25% {
+                    transform: scaleX(0.7) translateX(-15%);
+                }
+                50% {
+                    transform: scaleX(0.1) translateX(0);
+                }
+                75% {
+                    transform: scaleX(0.7) translateX(15%);
+                }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = keyframes;
+        document.head.appendChild(styleSheet);
+        
+        container.style.animation = `${animationName} 1.95s ${animationDelay}s infinite ease-in-out`;
+        
+        strand.appendChild(container);
+        dna.appendChild(strand);
+    }
+    const processCircle = document.querySelector('.process-circle');
+        const processRings = document.querySelectorAll('.process-ring');
+        const processPoints = document.querySelectorAll('.process-point');
+        const processLabels = document.querySelectorAll('.process-label');
+        
+        // Initialize Intersection Observer for better performance
+        const options = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.2 // 20% of the element is visible
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start the animation sequence
+                    animateProcessCircle();
+                    // Stop observing once triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+        
+        // Start observing
+        observer.observe(processCircle);
+        
+        function animateProcessCircle() {
+            // First activate the main circle
+            processCircle.classList.add('active');
+            
+            // Then activate the rings with staggered delay
+            processRings.forEach((ring, index) => {
+                setTimeout(() => {
+                    ring.classList.add('active');
+                }, 300 + (index * 200));
+            });
+            
+            // Finally, activate points and labels with more delay and sequence
+            processPoints.forEach((point, index) => {
+                setTimeout(() => {
+                    point.classList.add('active');
+                    
+                    // Activate the corresponding label shortly after each point
+                    setTimeout(() => {
+                        if (processLabels[index]) {
+                            processLabels[index].classList.add('active');
+                        }
+                    }, 150);
+                    
+                }, 1000 + (index * 250)); // Staggered animation for each point
+            });
+        }
+        
+        // Function to animate counting up to a number
+        function animateCounter(element, target, duration = 2000, isKPlus = false) {
+            // Make element visible
+            element.classList.add('animated');
+            
+            const startTimestamp = performance.now();
+            const startValue = 0;
+            
+            // Use requestAnimationFrame for smooth animation
+            const updateCounter = (timestamp) => {
+                // Calculate progress
+                const elapsed = timestamp - startTimestamp;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Use easing function for smoother animation
+                const easedProgress = easeOutQuad(progress);
+                
+                // Calculate current value
+                let currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+                
+                // Format the display value
+                if (isKPlus && currentValue >= 1000) {
+                    element.textContent = Math.floor(currentValue / 1000) + 'K+';
+                } else if (element.classList.contains('percentage')) {
+                    element.textContent = currentValue + '%';
+                } else if (element.classList.contains('plus')) {
+                    element.textContent = currentValue + '+';
+                } else {
+                    element.textContent = currentValue;
+                }
+                
+                // Continue animation if not complete
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+            
+            // Start the animation
+            requestAnimationFrame(updateCounter);
+        }
+        
+        // Easing function for smoother animation
+        function easeOutQuad(x) {
+            return 1 - (1 - x) * (1 - x);
+        }
+        
+        // Function to start animation when elements are in viewport
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Fade in the stats section
+                    entry.target.classList.add('active');
+                    
+                    // Start counter animations
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    
+                    counters.forEach(counter => {
+                        // Parse the target value from the original HTML
+                        let targetValue;
+                        const content = counter.textContent.trim();
+                        
+                        if (content.endsWith('K+')) {
+                            targetValue = parseInt(content.replace('K+', '')) * 1000;
+                            animateCounter(counter, targetValue, 2000, true);
+                        } else if (content.endsWith('%')) {
+                            counter.classList.add('percentage');
+                            targetValue = parseInt(content.replace('%', ''));
+                            animateCounter(counter, targetValue);
+                        } else if (content.endsWith('+')) {
+                            counter.classList.add('plus');
+                            targetValue = parseInt(content.replace('+', ''));
+                            animateCounter(counter, targetValue);
+                        } else {
+                            targetValue = parseInt(content);
+                            animateCounter(counter, targetValue);
+                        }
+                    });
+                    
+                    // Stop observing once animation has started
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+        
+        // Set up the Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const stats = document.querySelector('.stats');
+            if (!stats) return;
+            
+            // Add fade-in class to stats for animation
+            stats.classList.add('fade-in');
+            
+            const observer = new IntersectionObserver(handleIntersection, {
+                root: null, // viewport
+                threshold: 0.1 // trigger when 10% visible
+            });
+            
+            // Start observing the stats container
+            observer.observe(stats);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+    const navbarHeight = navbar.offsetHeight;
+    
+    // Add transition effect to the navbar
+    navbar.style.transition = 'transform 0.3s ease-in-out';
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // If we're scrolling down and we're past a threshold (e.g., 50px)
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Hide navbar by translating it up
+            navbar.style.transform = `translateY(-${navbarHeight}px)`;
+        } else {
+            // Show navbar when scrolling up
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
+
+</script>
