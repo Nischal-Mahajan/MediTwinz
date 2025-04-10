@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediTwinzz - Advanced Medical Solutions</title>
+    <title>MediTwinz - Advanced Medical Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -567,7 +567,380 @@
             }
         }
 
+        .footer {
+        background-color: white;
+        color: black;
+        padding: 75px 0;
+        border-top: 1px solid #c6bbbb;
+    }
+    
+    .footer-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo-section {
+        width: 25%;
+        min-width: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .logo-img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .tagline {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 30px;
+        font-size: 22px;
+    }
+    
+    .social-icon {
+        width: 30px;
+        height: 70px;
+        background-color: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    
+    .footer-nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 70%;
+    }
+    
+    .footer-section {
+        width: 23%;
+        min-width: 120px;
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #000;
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+        padding-left: 0;
+    }
+    
+    .footer-links a::before {
+        content: "→";
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        padding-left: 20px;
+        color: #9587ea;
+    }
+    
+    .footer-links a:hover::before {
+        left: 0;
+        opacity: 1;
+    }
+    
+    .newsletter-section {
+        width: 23%;
+        min-width: 200px;
+    }
+    
+    .newsletter {
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .email-input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        width: 75%;
+    }
+    
+    .submit-button {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        padding: 8px 15px;
+        cursor: pointer;
+    }
+    
+    .footer-bottom {
+        padding-top: 20px;
+        border-top: 1px solid #c6bbbb;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .contact-info {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-logo-section, .footer-section, .newsletter-section {
+            width: 100%;
+        }
+        
+        .footer-nav {
+            width: 100%;
+        }
+        
+        .contact-info {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
 
+    .faq-section {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 5%;
+}
+
+.faq-container {
+    padding: 2rem 0;
+}
+
+.faq-heading {
+            font-size: 2.25rem;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition-delay: 0.1s; /* Slight delay for the heading */
+        }
+        
+        .faq-subheading {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition-delay: 0.3s; /* Slightly longer delay for the subheading */
+        }
+        
+        /* Active states for animations */
+        .faq-heading.active,
+        .faq-subheading.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+/* Layout for FAQs and image side by side */
+.faq-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: flex-start;
+    height: 500px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    max-width: 50%;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.faq-toggle {
+    background: transparent;
+    border: none;
+    color: #9587ea;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.faq-toggle.active {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 0;
+}
+
+.faq-answer p {
+    padding-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px;
+}
+
+/* Image container styling */
+.faq-image-container {
+    opacity: 0; /* Start fully transparent */
+    transform: translateY(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity; /* Hint for browser optimization */
+}
+
+.faq-image-container.active {
+    opacity: 1;
+    transform: translateY(0); /* Use translateY(0) instead of translateZ(0) */
+    /* Force hardware acceleration: */
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+}
+
+/* Add this to the image itself */
+.faq-image {
+    -webkit-transform: translateZ(0);
+    --webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    height: 480px;
+    border-radius: 20px;
+}
+
+
+/* Optional Caption Styling */
+.faq-image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.faq-image-caption p {
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .faq-layout {
+        flex-direction: column;
+    }
+
+    .faq-list {
+        max-width: 100%;
+    }
+
+    .faq-image-container {
+        flex: 0 0 35%;
+    }
+}
+
+
+.section-heading {
+    text-align: center;
+    max-width: 1400px;
+    margin: 3rem auto 2rem;
+    padding: 0 5%;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-heading.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-heading h2 {
+    font-size: 2.4rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
     </style>
 </head>
 <body>
@@ -590,9 +963,9 @@
     <div class="main-container">
         <!-- Left Side Content -->
         <div class="content">
-            <h1 class="hero-heading">Advanced <span>DNA Analysis</span> for Better Healthcare</h1>
+            <h1 class="hero-heading">Reimagining <span>Healthcare</span> With Smarter & Simpler Insights</h1>
             <p class="hero-subheading">
-                MediScan provides cutting-edge genomic testing and AI analysis for precise diagnosis and personalized treatment plans.
+                MediTwinz tracks your health with ease—advanced insights and clear reports made for patients and doctors.
             </p>
             <div class="cta-container">
                 <button class="btn btn-primary">Get Started</button>
@@ -601,15 +974,23 @@
             <div class="feature-list">
                 <div class="feature-item">
                     <div class="feature-icon">✓</div>
-                    <p>Comprehensive DNA Sequencing</p>
+                    <p>Advanced health insights</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">✓</div>
-                    <p>AI-Powered Medical Diagnostics</p>
+                    <p>AI-Powered Medical healthcare</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">✓</div>
                     <p>Personalized Treatment Recommendations</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <p>Powerful health clarity</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <p>Data-driven care</p>
                 </div>
             </div>
         </div>
@@ -625,11 +1006,10 @@
     <div class="mission-section">
         <div class="mission-text">
             <h2 class="mission-heading">
-                Our <span class="blue-highlight">Mission</span> is to unravel the intricacies of your genetic code, providing you with the most 
-                detailed diagnostic insights.
+                Our <span class="blue-highlight">Mission</span> is to unlock the story written in your body’s code, <span class="blue-highlight">Empowering</span> you with clear insights that guide you toward a healthier, brighter <span class="blue-highlight">Future</span>.
             </h2>
             <p class="mission-subheading">
-                MediScan's <span class="blue-highlight">Precision Diagnostics</span>
+                MediTwinz's <span class="blue-highlight">Precision Diagnostics</span>
             </p>
             <div class="stats">
                 <div class="stat-item">
@@ -667,22 +1047,22 @@
     
                 <!-- Second point - Middle circle -->
                 <div class="process-point" style="top: 5%; left: 95%;">
-                    <div class="process-label" style="top: -10px; left: 20px;">
-                        <span class="blue-highlight">DNA</span> Extraction
+                    <div class="process-label" style="top: -10px; left: 18px;">
+                        <span class="blue-highlight">Personalized</span> Treatment
                     </div>
                 </div>
     
                 <!-- Third point - Inner circle -->
                 <div class="process-point" style="top: 50%; left: 102%;">
                     <div class="process-label" style="top: 0; left: 20px;">
-                        <span class="blue-highlight">Genetic</span> Analysis
+                        <span class="blue-highlight">Symptom</span> Analysis
                     </div>
                 </div>
     
                 <!-- Fourth point - Outer circle -->
                 <div class="process-point" style="top: 95%; left: 95%;">
                     <div class="process-label" style="top: 15px; left: 20px;">
-                        <span class="blue-highlight">Diagnostic</span> Review
+                        <span class="blue-highlight">Emergency</span> Prediction
                     </div>
                 </div>
     
@@ -696,21 +1076,21 @@
                 <!-- Sixth point - Inner circle -->
                 <div class="process-point" style="top: 95%; left: 5%;">
                     <div class="process-label" style="top: 15px; right: 20px;">
-                        <span class="blue-highlight">Report</span> Generation
+                        <span class="blue-highlight">Smart</span> Reminders
                     </div>
                 </div>
     
                 <!-- Seventh point - Outer circle -->
                 <div class="process-point" style="top: 50%; left: -2.5%;">
                     <div class="process-label" style="top: 0; right: 20px;">
-                        <span class="blue-highlight">Clinical</span> Consultation
+                        <span class="blue-highlight">Recovery</span> Tracker
                     </div>
                 </div>
     
                 <!-- Eighth point - Middle circle -->
                 <div class="process-point" style="top: 5%; left: 6%;">
                     <div class="process-label" style="top: -10px; right: 20px;">
-                        <span class="blue-highlight">Treatment</span> Planning
+                        <span class="blue-highlight">Health</span> Reports
                     </div>
                 </div>
             </div>
@@ -763,7 +1143,160 @@
         </div>
     </div>
 
+    <div class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-heading">Frequently Asked Questions</h2>
+            <p class="faq-subheading">Find answers to common questions about our services</p>
+            
+            <div class="faq-layout">
+                <!-- Left side - FAQs -->
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What do I need to bring for my first visit?</h3>
+                            <button class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Bring a valid photo ID, your insurance card (if applicable), and a list of any medications you're currently taking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What if I need to cancel or reschedule my appointment?</h3>
+                            <button class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can cancel or reschedule through your account on our website or by calling us at least 24 hours in advance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is my genetic data kept private?</h3>
+                            <button class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, privacy is our priority. Your genetic information is protected with enterprise-grade encryption and is never sold to third parties. We comply with all relevant health privacy regulations including HIPAA. You retain complete ownership and control over your genetic data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you accept insurance?</h3>
+                            <button class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we work with most major insurance providers and can help determine your coverage before beginning the testing process. Many preventative genetic tests are now covered by insurance, particularly for individuals with relevant family medical history.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How can I get a prescription refill?</h3>
+                            <button class="faq-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can request a refill through our patient portal or call the clinic directly.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side - Image -->
+                <div class="faq-image-container">
+                    <img src="https://i.pinimg.com/736x/6b/bd/2a/6bbd2a1cac82fa6ede14688ab31a3558.jpg" alt="DNA Testing Process" class="faq-image">
+                    <!-- <div class="faq-image-caption">
+                        <span class="blue-highlight">Advanced</span> DNA Analysis
+                        <p>Our state-of-the-art process ensures accurate results</p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo-section">
+                    <div class="footer-logo">
+                        <!-- <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#333" />
+                            <path d="M50 15 C 65 25, 80 40, 65 65 C 55 80, 45 80, 35 65 C 20 40, 35 25, 50 15" fill="white" />
+                        </svg> -->
+                        <div class="logo-text" style="cursor: pointer;">Meditwinz</div>
+                    </div>
+                    <p class="tagline">We understand that life challenges can sometimes be overwhelming</p>
+                    <div class="social-icons">
+                        <a href="#" class="si" style="color: #000; "><i class="fab fa-instagram" style="height: 35px;"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-section">
+                        <h3 class="section-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us</a></li>
+                            <!-- <li><a href="#">Pricing</a></li> -->
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="section-title">Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Personal meeting</a></li>
+                            <li><a href="#">Family counselling</a></li>
+                            <li><a href="#">Anxiety disorder</a></li>
+                            <li><a href="#">Online session</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="section-title">Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Terms of use</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">FAQ's</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="newsletter-section">
+                        <h3 class="section-title">Get In Touch</h3>
+                        <p>Subscribe Our Newsletter To Get Our Latest Updated News!</p>
+                        <div class="newsletter">
+                            <input type="email" placeholder="Your Email Address" class="email-input">
+                            <button class="submit-button">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>© Meditwinz - 2025 All rights reserved.</div>
+                <div class="contact-info">
+                    <div class="contact-item">Chitkara University, Rajpura &nbsp;&nbsp; •</div>
+                    <div class="contact-item">9696969696  &nbsp;&nbsp; • </div>
+                    <div class="contact-item">meditwinz@healthgmail.com</div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
 <script>
@@ -1009,4 +1542,246 @@
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    // Function to handle video loading and ensure fade-in works properly
+    function handleVideoLoad() {
+        // Make sure opacity is initially set to 0 before animation starts
+        videoPlayer.style.opacity = '0';
+        
+        // After a short delay, allow the CSS animation to take effect
+        setTimeout(() => {
+            videoPlayer.style.opacity = '';  // Reset to use the CSS animation
+        }, 100);
+    }
+
+    // Check if the video is already loaded
+    if (videoPlayer.readyState >= 2) {
+        handleVideoLoad();
+    } else {
+        // If not loaded yet, wait for it
+        videoPlayer.addEventListener('loadeddata', handleVideoLoad);
+    }
+    
+    // Error handling in case the video can't autoplay
+    videoPlayer.addEventListener('error', function(e) {
+        console.error('Video error:', e);
+        // You could add a fallback image or message here
+    });
+    
+    // Some browsers might pause autoplay videos, this helps restart if user interacts
+    document.addEventListener('click', function() {
+        if (videoPlayer.paused) {
+            videoPlayer.play().catch(e => console.log('Play prevented:', e));
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const videoWrapper = document.querySelector('.video-wrapper');
+    
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Function to handle scroll events
+    function handleScroll() {
+        if (isInViewport(videoWrapper) && !videoWrapper.classList.contains('active')) {
+            videoWrapper.classList.add('active');
+            videoWrapper.classList.add('pop-animation'); // For the more dramatic pop effect
+            
+            // Remove the scroll listener once animation is triggered
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Check initial state in case video is already in view when page loads
+    handleScroll();
+});
+document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const toggle = item.querySelector('.faq-toggle');
+            
+            question.addEventListener('click', function() {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-toggle').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const missionText = document.querySelector('.mission-text');
+        
+        // Function to check if an element is in the viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+        
+        // Function to handle scroll events for mission section
+        function handleMissionScroll() {
+            if (isInViewport(missionText) && !missionText.classList.contains('active')) {
+                missionText.classList.add('active');
+                
+                // Remove the scroll listener once animation is triggered
+                window.removeEventListener('scroll', handleMissionScroll);
+            }
+        }
+        
+        // Add scroll event listener for mission section
+        window.addEventListener('scroll', handleMissionScroll);
+        
+        // Check initial state in case mission section is already in view when page loads
+        handleMissionScroll();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sectionHeading = document.querySelector('.section-heading');
+        const faqImageContainer = document.querySelector('.faq-image-container');
+        
+        // Function to handle scroll events for section heading and FAQ image
+        function handleScroll() {
+            // Check section heading
+            if (isInViewport(sectionHeading) && !sectionHeading.classList.contains('active')) {
+                sectionHeading.classList.add('active');
+            }
+            
+            // Check FAQ image
+            if (isInViewport(faqImageContainer) && !faqImageContainer.classList.contains('active')) {
+                faqImageContainer.classList.add('active');
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+        
+        // Check initial state
+        handleScroll();
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const sectionHeading = document.querySelector('.section-heading');
+    const faqImageContainer = document.querySelector('.faq-image-container');
+    
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Function to handle scroll events for section heading and FAQ image
+    function handleElementsScroll() {
+        // Check section heading
+        if (sectionHeading && isInViewport(sectionHeading) && !sectionHeading.classList.contains('active')) {
+            sectionHeading.classList.add('active');
+        }
+        
+        // Check FAQ image
+        if (faqImageContainer && isInViewport(faqImageContainer) && !faqImageContainer.classList.contains('active')) {
+            faqImageContainer.classList.add('active');
+        }
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleElementsScroll);
+    
+    // Check initial state
+    handleElementsScroll();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const faqImageContainer = document.querySelector('.faq-image-container');
+    
+    if (!faqImageContainer) return;
+    
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Function to handle scroll events for FAQ image
+    function checkFaqImage() {
+        if (isInViewport(faqImageContainer) && !faqImageContainer.classList.contains('active')) {
+            faqImageContainer.classList.add('active');
+            window.removeEventListener('scroll', checkFaqImage);
+        }
+    }
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkFaqImage);
+    
+    // Check initial position
+    checkFaqImage();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+            const faqHeading = document.querySelector('.faq-heading');
+            const faqSubheading = document.querySelector('.faq-subheading');
+            
+            // Function to check if an element is in the viewport
+            function isInViewport(element) {
+                if (!element) return false;
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Function to handle scroll events for FAQ headings
+            function handleFaqHeadingsScroll() {
+                // Check FAQ heading
+                if (faqHeading && isInViewport(faqHeading) && !faqHeading.classList.contains('active')) {
+                    faqHeading.classList.add('active');
+                }
+                
+                // Check FAQ subheading
+                if (faqSubheading && isInViewport(faqSubheading) && !faqSubheading.classList.contains('active')) {
+                    faqSubheading.classList.add('active');
+                }
+                
+                // If both are active, we can remove the event listener
+                if ((!faqHeading || faqHeading.classList.contains('active')) && 
+                    (!faqSubheading || faqSubheading.classList.contains('active'))) {
+                    window.removeEventListener('scroll', handleFaqHeadingsScroll);
+                }
+            }
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleFaqHeadingsScroll);
+            
+            // Check initial state
+            handleFaqHeadingsScroll();
+        });
 </script>
