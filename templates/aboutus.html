@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MediTwinz</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+   
+    <style>
+        /* Base Styles with Premium Black & White Color Scheme */
+        :root {
+            --premium-black: #1a1a1a;
+            --soft-black: #222222;
+            --dark-gray: #333333;
+            --medium-gray: #777777;
+            --light-gray: #f5f5f5;
+            --premium-white: #ffffff;
+            --off-white: #f9f9f9;
+            --accent: #c0c0c0; /* Silver accent */
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'DM sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--premium-white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--premium-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--premium-black);
+        }
+        
+        .contact-btn {
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+            padding: 10px 20px;
+            border-radius: 0;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--dark-gray);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .hero h1 span {
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .section-title p {
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .mission-card {
+            background-color: var(--off-white);
+            border-radius: 0;
+            padding: 40px;
+            transition: transform 0.3s;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .mission-card h3 {
+            color: var(--premium-black);
+            margin-top: 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+        
+        .icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--premium-black);
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            padding: 100px 0;
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+        }
+        
+        .timeline .section-title h2,
+        .timeline .section-title p {
+            color: var(--premium-white);
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--premium-white);
+            border: 2px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: var(--soft-black);
+            border-radius: 0;
+            border: 1px solid #333;
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .timeline-content p {
+            color: var(--light-gray);
+            margin-bottom: 0;
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 100px 0;
+            background-color: var(--premium-white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: var(--premium-white);
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        
+        .team-member:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .team-info {
+            padding: 30px;
+        }
+        
+        .team-info h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--premium-black);
+        }
+        
+        .team-info p {
+            color: var(--medium-gray);
+            margin-top: 5px;
+        }
+        
+        .specialty {
+            color: var(--dark-gray);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 0;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+        }
+        
+        /* Values Section */
+        .values {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background-color: var(--premium-white);
+            border-radius: 0;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .value-icon {
+            font-size: 36px;
+            color: var(--premium-black);
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        /* Accolades Section */
+        .accolades {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+        }
+        
+        .accolades .section-title h2,
+        .accolades .section-title p {
+            color: var(--premium-white);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--premium-white);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background-color: var(--premium-white);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--medium-gray);
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--premium-black);
+            color: var(--premium-white);
+            padding: 15px 40px;
+            border-radius: 0;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        .cta-btn:hover {
+            background-color: var(--dark-gray);
+        }
+        
+        /* Footer */
+        .footer {
+        background-color: white;
+        color: black;
+        padding: 75px 0;
+        border-top: 1px solid #c6bbbb;
+    }
+    
+    .footer-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo-section {
+        width: 25%;
+        min-width: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .logo-img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    .tagline {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 30px;
+        font-size: 22px;
+    }
+    
+    .social-icon {
+        width: 30px;
+        height: 70px;
+        background-color: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    
+    .footer-nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 70%;
+    }
+    
+    .footer-section {
+        width: 23%;
+        min-width: 120px;
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #000;
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+        padding-left: 0;
+    }
+    
+    .footer-links a::before {
+        content: "→";
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        padding-left: 20px;
+        color: #9587ea;
+    }
+    
+    .footer-links a:hover::before {
+        left: 0;
+        opacity: 1;
+    }
+    
+    .newsletter-section {
+        width: 23%;
+        min-width: 200px;
+    }
+    
+    .newsletter {
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .email-input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        width: 75%;
+    }
+    
+    .submit-button {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        padding: 8px 15px;
+        cursor: pointer;
+    }
+    
+    .footer-bottom {
+        padding-top: 20px;
+        border-top: 1px solid #c6bbbb;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .contact-info {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-logo-section, .footer-section, .newsletter-section {
+            width: 100%;
+        }
+        
+        .footer-nav {
+            width: 100%;
+        }
+        
+        .contact-info {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+        .profile-name {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--white-text-primary);
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="{{url_for('index')}}" style="text-decoration: none;"><span class="profile-name" style="color: #000;">Medi<span style="color: #9587ea;">Twinz</span> </span></a>
+                </div>
+                <nav class="nav-links">
+                    <a href="{{url_for('index')}}">HOME</a>
+                    <a href="{{url_for('about')}}" class="active">ABOUT</a>
+                    <a href="services.html">SERVICES</a>
+                    <a href="doctors.html">DOCTORS</a>
+                    <a href="blog.html">BLOG</a>
+                </nav>
+                <a href="{{url_for('contract')}}" class="contact-btn">CONTACT US</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our <span>Legacy</span> of Excellence</h1>
+                <p>For over 15 years, Shifa has been redefining healthcare through our unwavering commitment to personalized care and medical innovation.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Philosophy & Purpose</h2>
+                <p>Our foundational principles guide every aspect of our practice.</p>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="icon">◆</div>
+                    <h3>Our Mission</h3>
+                    <p>To provide accessible, personalized healthcare services that empower individuals to achieve optimal health and wellness through compassionate care, cutting-edge technology, and evidence-based medicine.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">◇</div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading healthcare provider known for excellence in patient care, medical innovation, and community wellness, creating a healthier future for all the communities we serve.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="icon">○</div>
+                    <h3>Our Promise</h3>
+                    <p>We promise to treat each patient with dignity and respect, to listen carefully to your concerns, and to work together with you to develop personalized care plans that address your unique health needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="timeline">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Evolution</h2>
+                <p>The milestones that have shaped our institution.</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2009</h3>
+                        <p>Shifa was founded with a small clinic and three dedicated physicians committed to providing quality healthcare to our local community.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2012</h3>
+                        <p>Expanded our services to include specialized care in cardiology, pediatrics, and orthopedics while adopting cutting-edge medical technologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2016</h3>
+                        <p>Launched our telemedicine platform, making healthcare more accessible to patients regardless of location or mobility constraints.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2020</h3>
+                        <p>Led community response efforts during the global health crisis, demonstrating our commitment to public health and safety.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2023</h3>
+                        <p>Recognized for excellence in patient care with multiple industry awards and expanded to serve over 200,000 patients annually.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Today</h3>
+                        <p>Continuing to innovate and expand our services while remaining true to our founding mission of compassionate, personalized care for all.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Leadership</h2>
+                <p>The visionaries guiding our commitment to excellence.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Dr. Sophia Patel">
+                    <div class="team-info">
+                        <h3>Dr. Sophia Patel</h3>
+                        <p class="specialty">CHIEF MEDICAL OFFICER</p>
+                        <p>With over 20 years of experience in orthopedic surgery, Dr. Patel leads our medical team with compassion and expertise.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-btn">f</a>
+                            <a href="#" class="social-btn">t</a>
+                            <a href="#" class="social-btn">in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Dr. James Anderson">
+                    <div class="team-info">
+                        <h3>Dr. James Anderson</h3>
+                        <p class="specialty">MEDICAL DIRECTOR</p>
+                        <p>A renowned cardiologist who has pioneered innovative treatments and leads our cardiovascular department.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-btn">f</a>
+                            <a href="#" class="social-btn">t</a>
+                            <a href="#" class="social-btn">in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Dr. Emily Rodriguez">
+                    <div class="team-info">
+                        <h3>Dr. Emily Rodriguez</h3>
+                        <p class="specialty">HEAD OF PEDIATRICS</p>
+                        <p>Dedicated to providing compassionate care for our youngest patients with a focus on preventive medicine.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-btn">f</a>
+                            <a href="#" class="social-btn">t</a>
+                            <a href="#" class="social-btn">in</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Michael Chen">
+                    <div class="team-info">
+                        <h3>Michael Chen</h3>
+                        <p class="specialty">CHIEF EXECUTIVE OFFICER</p>
+                        <p>With a background in healthcare administration and a passion for patient-centered care, Michael guides our strategic vision.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-btn">f</a>
+                            <a href="#" class="social-btn">t</a>
+                            <a href="#" class="social-btn">in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     -->
+    <section class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Core Values</h2>
+                <p>The principles that define our approach to healthcare.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>COMPASSION</h3>
+                    <p>We treat every patient with kindness, empathy, and respect, recognizing the human experience behind every medical condition.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>EXCELLENCE</h3>
+                    <p>We strive for the highest standards in medical care, continuously improving our skills, knowledge, and services.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>INNOVATION</h3>
+                    <p>We embrace technological advancements and creative solutions to enhance patient care and treatment outcomes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>INTEGRITY</h3>
+                    <p>We uphold the highest ethical standards, ensuring transparency, honesty, and accountability in all our interactions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>COLLABORATION</h3>
+                    <p>We believe in teamwork—among our staff, with our patients, and within our community—to achieve the best possible health outcomes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">◈</div>
+                    <h3>PATIENT-CENTERED</h3>
+                    <p>We place patients at the center of everything we do, respecting their preferences, needs, and values.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="accolades">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+                <p>A legacy of excellence in numbers.</p>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">200k+</div>
+                    <div class="stat-text">PATIENTS SERVED</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50k+</div>
+                    <div class="stat-text">POSITIVE REVIEWS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-text">COST SAVINGS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-text">YEARS OF SERVICE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Experience Exceptional Care</h2>
+            <p>Join thousands of satisfied patients who have trusted us with their health and wellness journey.</p>
+            <a href="appointment.html" class="cta-btn">BOOK AN APPOINTMENT</a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo-section">
+                    <div class="footer-logo">
+                        <!-- <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#333" />
+                            <path d="M50 15 C 65 25, 80 40, 65 65 C 55 80, 45 80, 35 65 C 20 40, 35 25, 50 15" fill="white" />
+                        </svg> -->
+                        <div class="logo-text" style="cursor: pointer;">Meditwinz</div>
+                    </div>
+                    <p class="tagline">We understand that life challenges can sometimes be overwhelming</p>
+                    <div class="social-icons">
+                        <a href="#" class="si" style="color: #000; "><i class="fab fa-instagram" style="height: 35px;"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="si" style="color: #000;"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="footer-section">
+                        <h3 class="section-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us</a></li>
+                            <!-- <li><a href="#">Pricing</a></li> -->
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="section-title">Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Personal meeting</a></li>
+                            <li><a href="#">Family counselling</a></li>
+                            <li><a href="#">Anxiety disorder</a></li>
+                            <li><a href="#">Online session</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="section-title">Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Terms of use</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">FAQ's</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="newsletter-section">
+                        <h3 class="section-title">Get In Touch</h3>
+                        <p>Subscribe Our Newsletter To Get Our Latest Updated News!</p>
+                        <div class="newsletter">
+                            <input type="email" placeholder="Your Email Address" class="email-input">
+                            <button class="submit-button">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>© Meditwinz - 2025 All rights reserved.</div>
+                <div class="contact-info">
+                    <div class="contact-item">Chitkara University, Rajpura &nbsp;&nbsp; •</div>
+                    <div class="contact-item">9696969696  &nbsp;&nbsp; • </div>
+                    <div class="contact-item">meditwinz@healthgmail.com</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

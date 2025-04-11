@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health AI Ascend</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: 'DM sans', Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 270px;
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #e0e0e0;
+    }
+
+    .app-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      color: #333;
+      padding: 10px;
+    }
+
+    .app-title i {
+      font-size: 1.2rem;
+      margin-right: 10px;
+      color: #10b981;
+    }
+
+    .app-title span {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item i {
+      margin-right: 12px;
+      font-size: 1.1rem;
+    }
+
+    .menu-item.active {
+      background-color: #e6f7f1;
+      color: #10b981;
+      font-weight: 500;
+    }
+
+    .menu-item:hover:not(.active) {
+      background-color: #f1f5f9;
+    }
+
+    .consultation-box {
+      background-color: #f0f9ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .consultation-box .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: #dbeafe;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      color: #3b82f6;
+    }
+
+    .consultation-box h3 {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .consultation-box p {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .start-chat-btn {
+      background: linear-gradient(to right, #1d4ed8, #3b82f6);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    .start-chat-btn:hover {
+      opacity: 0.9;
+    }
+
+    .bottom-menu {
+      margin-top: 30px;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 20px 30px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 20px;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .logo span {
+      color: #10b981;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .notification-icon {
+      margin-right: 20px;
+      position: relative;
+      cursor: pointer;
+      color: #64748b;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      background-color: #10b981;
+      border-radius: 50%;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      margin-bottom: 30px;
+    }
+
+    .welcome-section h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      color: #1e293b;
+    }
+
+    .welcome-section p {
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .health-metrics {
+      grid-column: span 4;
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .treatment-recommendations {
+      grid-column: span 4;
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .medication-tracker {
+      grid-column: span 4;
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .edit-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #64748b;
+      cursor: pointer;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1e293b;
+    }
+
+    .section-subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    /* Health Metrics */
+    .metric {
+      margin-bottom: 20px;
+    }
+
+    .metric-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .metric-icon {
+      color: #10b981;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    .metric-name {
+      flex: 1;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #e2e8f0;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .heart-rate-fill {
+      width: 72%;
+      background: linear-gradient(to right, #3b82f6, #93c5fd);
+    }
+
+    .blood-pressure-fill {
+      width: 80%;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+    }
+
+    .glucose-fill {
+      width: 65%;
+      background: linear-gradient(to right, #3b82f6, #93c5fd);
+    }
+
+    /* Treatment Recommendations */
+    .recommendation-card {
+      background-color: #f0f7ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .recommendation-card.green {
+      background-color: #f0faf5;
+    }
+
+    .recommendation-title {
+      color: #3b82f6;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .recommendation-title.green {
+      color: #10b981;
+    }
+
+    .recommendation-text {
+      color: #475569;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .recommendation-footer {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .recommendation-footer i {
+      margin-right: 5px;
+      font-size: 0.8rem;
+    }
+
+    .view-plan-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-top: 10px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .view-plan-btn i {
+      margin-left: 8px;
+    }
+
+    /* Medication Tracker */
+    .medication-progress {
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .progress-label span {
+      font-size: 0.9rem;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .progress-label span.progress-value {
+      color: #10b981;
+    }
+
+    .daily-progress-bar {
+      height: 8px;
+      background-color: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .daily-progress-fill {
+      height: 100%;
+      width: 66%;
+      background: linear-gradient(to right, #10b981, #34d399);
+      border-radius: 4px;
+    }
+
+    .medication-list {
+      margin-top: 20px;
+    }
+
+    .medication-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .medication-status {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ecfdf5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #10b981;
+    }
+
+    .medication-status.pending {
+      background-color: #eff6ff;
+      color: #3b82f6;
+    }
+
+    .medication-info {
+      flex: 1;
+    }
+
+    .medication-name {
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 3px;
+    }
+
+    .medication-details {
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .medication-time {
+      color: #10b981;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .medication-time.pending {
+      color: #3b82f6;
+    }
+
+    .mark-taken-btn {
+      display: block;
+      margin: 20px auto 0;
+      background: none;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+
+    .mark-taken-btn:hover {
+      background-color: #f8fafc;
+    }
+
+    /* Health Insights */
+    .health-insights {
+      grid-column: span 12;
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+    }
+
+    .insights-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(to right, #10b981, #34d399);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+    }
+
+    .insights-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .insights-content p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="app-title">
+        <h2 style="cursor: pointer; font-family: 'DM Sans', Arial, sans-serif;">Medi<h2 style="color: #9587ea;">Twinz</h2>
+      </div>
+
+      <a href="#" class="menu-item active">
+        <i class="fas fa-th-large"></i>
+        <span style="margin-left: 10px;">Dashboard</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fas fa-heartbeat"></i>
+        <span style="margin-left: 10px;">Health Metrics</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fas fa-pills"></i>
+        <span style="margin-left: 10px;">Medications</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span style="margin-left: 10px;">Appointments</span>
+      </a>
+
+      <a href="#" class="menu-item">
+        <i class="fas fa-file-medical-alt"></i>
+        <span style="margin-left: 10px;">Reports</span>
+      </a>
+
+      <div class="consultation-box">
+        <div class="icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3>AI Consultation</h3>
+        <p>Get personalized advice</p>
+        <button class="start-chat-btn">Start Chat</button>
+      </div>
+
+      <div class="bottom-menu">
+        <a href="#" class="menu-item">
+          <i class="fas fa-cog"></i>
+          <span style="margin-left: 10px;">Settings</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-sign-out-alt"></i>
+          <span style="margin-left: 10px;">Log out</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">
+          Health AI <span>Ascend</span>
+        </div>
+        <div class="user-profile">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <div class="notification-badge"></div>
+          </div>
+          <div class="avatar">RP</div>
+        </div>
+      </div>
+
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h1>Welcome back, Rajesh</h1>
+        <p>Here's an overview of your health status and AI-powered recommendations.</p>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="dashboard-grid">
+        <!-- Health Metrics Card -->
+        <div class="health-metrics">
+          <h2 class="section-title">Health Metrics</h2>
+          <p class="section-subtitle">Your current health status</p>
+
+          <div class="metric">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div class="metric-name">Heart Rate</div>
+              <div class="metric-value">72 bpm</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill heart-rate-fill"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <div class="metric-name">Blood Pressure</div>
+              <div class="metric-value">120/80 mmHg</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill blood-pressure-fill"></div>
+            </div>
+          </div>
+
+          <div class="metric">
+            <div class="metric-header">
+              <div class="metric-icon">
+                <i class="fas fa-tint"></i>
+              </div>
+              <div class="metric-name">Blood Glucose</div>
+              <div class="metric-value">98 mg/dL</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill glucose-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Treatment Recommendations -->
+        <div class="treatment-recommendations">
+          <h2 class="section-title">AI Treatment Recommendations</h2>
+          <p class="section-subtitle">Personalized treatment plan based on your health data</p>
+
+          <div class="recommendation-card">
+            <h3 class="recommendation-title">Diabetes Management</h3>
+            <p class="recommendation-text">Based on your recent glucose readings, we recommend adjusting your insulin dosage to 15 units before meals.</p>
+            <div class="recommendation-footer">
+              <i class="fas fa-info-circle"></i>
+              <span>AI recommendation based on your last 7 days of data</span>
+            </div>
+          </div>
+
+          <div class="recommendation-card green">
+            <h3 class="recommendation-title green">Exercise Plan</h3>
+            <p class="recommendation-text">A 30-minute moderate intensity walk daily could help improve your blood pressure readings.</p>
+            <div class="recommendation-footer">
+              <i class="fas fa-info-circle"></i>
+              <span>AI recommendation based on your cardiac profile</span>
+            </div>
+          </div>
+
+          <button class="view-plan-btn">
+            View Full Treatment Plan
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Medication Tracker -->
+        <div class="medication-tracker">
+          <h2 class="section-title">Medication Tracker</h2>
+          <p class="section-subtitle">Today's medication schedule</p>
+          <div class="edit-icon">
+            <i class="fas fa-pen"></i>
+          </div>
+
+          <div class="medication-progress">
+            <div class="progress-label">
+              <span>Daily Progress</span>
+              <span class="progress-value">2/3 taken</span>
+            </div>
+            <div class="daily-progress-bar">
+              <div class="daily-progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="medication-list">
+            <div class="medication-item">
+              <div class="medication-status">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="medication-info">
+                <div class="medication-name">Metformin</div>
+                <div class="medication-details">500mg - With breakfast</div>
+              </div>
+              <div class="medication-time">Taken 8:30 AM</div>
+            </div>
+
+            <div class="medication-item">
+              <div class="medication-status">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="medication-info">
+                <div class="medication-name">Lisinopril</div>
+                <div class="medication-details">10mg - With lunch</div>
+              </div>
+              <div class="medication-time">Taken 1:15 PM</div>
+            </div>
+
+            <div class="medication-item">
+              <div class="medication-status pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="medication-info">
+                <div class="medication-name">Metformin</div>
+                <div class="medication-details">500mg - With dinner</div>
+              </div>
+              <div class="medication-time pending">Due 7:00 PM</div>
+            </div>
+          </div>
+
+          <button class="mark-taken-btn">Mark as Taken</button>
+        </div>
+
+        <!-- Health Insights -->
+        <div class="health-insights">
+          <div class="insights-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="insights-content">
+            <h3>AI Health Insights</h3>
+            <p>Your personalized health analysis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple toggle function for sidebar menu
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuItems = document.querySelectorAll('.menu-item');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          menuItems.forEach(mi => mi.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+      
+      // Mark medication as taken
+      const markTakenBtn = document.querySelector('.mark-taken-btn');
+      const pendingItem = document.querySelector('.medication-item:last-child');
+      
+      markTakenBtn.addEventListener('click', function() {
+        const status = pendingItem.querySelector('.medication-status');
+        const time = pendingItem.querySelector('.medication-time');
+        
+        status.classList.remove('pending');
+        status.innerHTML = '<i class="fas fa-check"></i>';
+        
+        time.classList.remove('pending');
+        time.textContent = 'Taken ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        
+        // Update progress
+        document.querySelector('.progress-value').textContent = '3/3 taken';
+        document.querySelector('.daily-progress-fill').style.width = '100%';
+        
+        // Disable button
+        markTakenBtn.disabled = true;
+        markTakenBtn.style.opacity = '0.5';
+        markTakenBtn.textContent = 'All Medications Taken';
+      });
+      
+      // View treatment plan button
+      const viewPlanBtn = document.querySelector('.view-plan-btn');
+      viewPlanBtn.addEventListener('click', function() {
+        alert('Viewing full treatment plan...');
+      });
+      
+      // Start chat button
+      const startChatBtn = document.querySelector('.start-chat-btn');
+      startChatBtn.addEventListener('click', function() {
+        alert('Starting AI consultation chat...');
+      });
+    });
+  </script>
+</body>
+</html>

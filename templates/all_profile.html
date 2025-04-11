@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediTwinz - All Health Profiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'DM sans', Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 16px 0 30px;
+      letter-spacing: 1px;
+    }
+
+    .heading {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .heading h2 {
+      color: #333;
+    }
+
+    .back-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #9785ea;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: opacity 0.3s;
+    }
+
+    .back-link:hover {
+      opacity: 0.9;
+    }
+
+    .profiles-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .profiles-table th,
+    .profiles-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .profiles-table th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .profiles-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .view-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #000;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .view-link:hover {
+      background-color: #9785ea;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .empty-state h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .empty-state p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 26px;
+      }
+      
+      .profiles-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Medi<span style="color: #9785ea;">Twinz</span></div>
+        
+        <div class="heading">
+          <h2>All Health Profiles</h2>
+          <a href="{{ url_for('index') }}" class="back-link">+ New Profile</a>
+        </div>
+        
+        {% if profiles %}
+          <table class="profiles-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Height/Weight</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for profile in profiles %}
+                <tr>
+                  <td>#{{ profile.id }}</td>
+                  <td>{{ profile.age }} years</td>
+                  <td>{{ profile.gender.capitalize() }}</td>
+                  <td>{{ profile.blood_group }}</td>
+                  <td>{{ profile.height }} cm / {{ profile.weight }} kg</td>
+                  <td>{{ profile.created_at.strftime('%Y-%m-%d') }}</td>
+                  <td>
+                    <a href="{{ url_for('view_profile', profile_id=profile.id) }}" class="view-link">View</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="empty-state">
+            <h3>No profiles yet</h3>
+            <p>Start by creating your first health profile</p>
+            <a href="{{ url_for('index') }}" class="back-link">Create Profile</a>
+          </div>
+        {% endif %}
+    </div>
+</body>
+</html>

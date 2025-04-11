@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediTwinz - Health Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'DM sans', Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .wrapper {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .logo {
+      margin-left: -40%;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 16px;
+      letter-spacing: 1px;
+    }
+
+    .profile-card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .profile-header h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .profile-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .profile-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .info-item {
+      margin-bottom: 20px;
+    }
+
+    .info-item h3 {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-item p {
+      font-size: 18px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .info-item.full-width {
+      grid-column: span 2;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #9785ea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .back-link:hover {
+      opacity: 0.8;
+    }
+
+    .flash-messages {
+      margin-bottom: 20px;
+    }
+
+    .flash-message {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    .flash-message.success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .flash-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    @media (max-width: 500px) {
+      .profile-card {
+        padding: 20px;
+      }
+
+      .profile-info {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item.full-width {
+        grid-column: span 1;
+      }
+
+      .logo {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">Medi<span style="color: #9785ea;">Twinz</span></div>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages">
+              {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+        
+        <div class="profile-card">
+          <div class="profile-header">
+            <h2>Health Profile</h2>
+            <p>Created on: {{ profile.created_at.strftime('%B %d, %Y') }}</p>
+          </div>
+          
+          <div class="profile-info">
+            <div class="info-item">
+              <h3>Age</h3>
+              <p>{{ profile.age }} years</p>
+            </div>
+            
+            <div class="info-item">
+              <h3>Gender</h3>
+              <p>{{ profile.gender.capitalize() }}</p>
+            </div>
+            
+            <div class="info-item">
+              <h3>Blood Group</h3>
+              <p>{{ profile.blood_group }}</p>
+            </div>
+            
+            <div class="info-item">
+              <h3>BMI</h3>
+              <p>{{ ((profile.weight / ((profile.height/100) ** 2))|round(1)) }} 
+                {% set bmi = (profile.weight / ((profile.height/100) ** 2))|round(1) %}
+              </p>
+            </div>
+            
+            <div class="info-item">
+              <h3>Height</h3>
+              <p>{{ profile.height }} cm</p>
+            </div>
+            
+            <div class="info-item">
+              <h3>Weight</h3>
+              <p>{{ profile.weight }} kg</p>
+            </div>
+
+            <div class="info-item full-width">
+              <h3>Lifestyle & Habits</h3>
+              <p>{{ profile.lifestyle or 'Not specified' }}</p>
+            </div>
+            
+            <div class="info-item full-width">
+              <h3>Allergies</h3>
+              <p>{{ profile.allergies or 'None reported' }}</p>
+            </div>
+          </div>
+          
+          <a href="{{ url_for('index') }}" class="back-link">← Back to Form</a>
+        </div>
+      </div>
+</body>
+</html>

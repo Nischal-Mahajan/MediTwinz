@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Meditwinz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'DM sans', Arial, sans-serif;
+    }
+
+    /* Premium White Theme */
+    :root {
+      --white-bg-primary: #ffffff;
+      --white-bg-secondary: #f9fafb;
+      --white-text-primary: #111827;
+      --white-text-secondary: #4b5563;
+      --white-border: #e5e7eb;
+      --white-input-bg: #ffffff;
+      --white-input-border: #d1d5db;
+      --white-accent: #0369a1;
+      --white-accent-hover: #0284c7;
+      --white-card-bg: #f0f9ff;
+      --white-card-border: #e0f2fe;
+      --white-shadow: rgba(0, 0, 0, 0.08);
+      --white-emergency-bg: #fee2e2;
+      --white-emergency-border: #ef4444;
+      --white-emergency-text: #b91c1c;
+      --white-checkbox-border: #d1d5db;
+    }
+
+    /* Premium Black Theme */
+    .dark {
+      --white-bg-primary: #111827;
+      --white-bg-secondary: #1f2937;
+      --white-text-primary: #f9fafb;
+      --white-text-secondary: #9ca3af;
+      --white-border: #374151;
+      --white-input-bg: #374151;
+      --white-input-border: #4b5563;
+      --white-accent: #0284c7;
+      --white-accent-hover: #0369a1;
+      --white-card-bg: #1e293b;
+      --white-card-border: #1e40af;
+      --white-shadow: rgba(0, 0, 0, 0.25);
+      --white-emergency-bg: #7f1d1d;
+      --white-emergency-border: #ef4444;
+      --white-emergency-text: #fca5a5;
+      --white-checkbox-border: #4b5563;
+    }
+
+    body {
+      background-color: var(--white-bg-secondary);
+      color: var(--white-text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 2rem;
+      gap: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      background: var(--white-bg-primary);
+      border: 1px solid var(--white-border);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px var(--white-shadow);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+      color: var(--white-text-primary);
+    }
+
+    .theme-toggle:hover {
+      box-shadow: 0 4px 6px var(--white-shadow);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      background-color: var(--white-bg-primary);
+      box-shadow: 0 4px 20px var(--white-shadow);
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--white-text-primary);
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: var(--white-text-secondary);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--white-text-primary);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--white-input-border);
+      background-color: var(--white-input-bg);
+      color: var(--white-text-primary);
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--white-accent);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .checkbox-item input {
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid var(--white-checkbox-border);
+    }
+
+    .checkbox-item label {
+      margin-bottom: 0;
+      font-weight: normal;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.875rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      background-color: var(--white-accent);
+      color: white;
+    }
+
+    button:hover {
+      background-color: var(--white-accent-hover);
+    }
+
+    .contact-methods {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-method {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      background-color: var(--white-card-bg);
+      border: 1px solid var(--white-card-border);
+      transition: all 0.3s ease;
+    }
+
+    .contact-method h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--white-text-primary);
+    }
+
+    .contact-method p {
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .contact-method a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--white-accent);
+    }
+
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white-text-primary);
+    }
+
+    .profile-website {
+      font-size: 0.875rem;
+      color: var(--white-text-secondary);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--white-border);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      color: var(--white-text-primary);
+    }
+
+    .cta-btn {
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      background-color: var(--white-accent);
+      color: white;
+    }
+    
+    .privacy-note {
+      font-size: 0.75rem;
+      color: var(--white-text-secondary);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .urgency-notice {
+      background-color: var(--white-emergency-bg);
+      border-left: 4px solid var(--white-emergency-border);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
+    }
+
+    .urgency-notice p {
+      color: var(--white-emergency-text);
+      text-align: left;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+    
+    .medical-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .medical-logo svg {
+      color: var(--white-accent);
+    }
+
+    /* Placeholder styling */
+    ::placeholder {
+      color: var(--white-text-secondary);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <div class="container">
+    <div class="header">
+      <div class="profile">
+        <div class="medical-logo">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+          <div class="profile-info">
+            <span class="profile-name">Medi<span style="color: #9587ea;">Twinz</span> </span>
+            <!-- <span class="profile-website">medlifeclinic.com</span> -->
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+          </svg>
+        </button>
+        <button class="action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </button>
+        <button class="cta-btn">Schedule Appointment</button>
+      </div>
+    </div>
+
+    <h1>Contact Our Medical Team</h1>
+    <p>Have questions about your health, our services, or need to schedule an appointment?<br>Our dedicated healthcare team is available to assist you with your medical needs.</p>
+
+    <div class="urgency-notice">
+      <p><strong>For medical emergencies:</strong> Please call 911 or go to your nearest emergency room immediately.</p>
+    </div>
+
+    <form>
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" placeholder="First name">
+        </div>
+        <div class="input-group">
+          <label for="last-name">Last name</label>
+          <input type="text" id="last-name" placeholder="Last name">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone number</label>
+        <div style="display: flex; gap: 0.5rem;">
+          <select style="width: 30%">
+            <option>US</option>
+            <option>UK</option>
+            <option>IN</option>
+            <option>CA</option>
+            <option>AU</option>
+          </select>
+          <input type="tel" id="phone" placeholder="(555) 000-0000" style="flex: 1;">
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <label for="dob">Date of birth</label>
+        <input type="date" id="dob">
+      </div>
+      
+      <div class="input-group">
+        <label for="reason">Reason for contact</label>
+        <select id="reason">
+          <option value="" disabled selected>Select a reason</option>
+          <option value="appointment">Schedule new appointment</option>
+          <option value="reschedule">Reschedule existing appointment</option>
+          <option value="results">Question about test results</option>
+          <option value="billing">Billing inquiry</option>
+          <option value="prescription">Prescription refill</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Please describe your concerns or questions..."></textarea>
+      </div>
+
+      <div class="input-group">
+        <label>Services of interest</label>
+        <div class="services">
+          <div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="primary-care">
+              <label for="primary-care">Primary Care</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="pediatrics">
+              <label for="pediatrics">Pediatrics</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="cardiology">
+              <label for="cardiology">Cardiology</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="dermatology">
+              <label for="dermatology">Dermatology</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="obgyn">
+              <label for="obgyn">Obstetrics & Gynecology</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="orthopedics">
+              <label for="orthopedics">Orthopedics</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="mental-health">
+              <label for="mental-health">Mental Health</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="other-service">
+              <label for="other-service">Other</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="checkbox-item">
+        <input type="checkbox" id="new-patient">
+        <label for="new-patient">I am a new patient</label>
+      </div>
+
+      <div class="checkbox-item" style="margin-bottom: 1.5rem;">
+        <input type="checkbox" id="privacy-consent">
+        <label for="privacy-consent">I consent to the privacy policy and the processing of my personal health information</label>
+      </div>
+
+      <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <button type="button" style="background-color: black;">Submit Request</button>
+      </a>
+      
+      <p class="privacy-note">Your personal and health information is protected under HIPAA. We will never share your information with third parties without your explicit consent.</p>
+    </form>
+
+    <div class="contact-methods">
+      <div class="contact-method">
+        <h3>Telehealth Consultation</h3>
+        <p>Connect with our healthcare providers from the comfort of your home.</p>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 10l5 5-5 5"></path>
+              <path d="M4 4v7a4 4 0 0 0 4 4h12"></path>
+            </svg>
+          </span>
+          Schedule virtual appointment
+        </a>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </span>
+          Email our telehealth team
+        </a>
+      </div>
+
+      <div class="contact-method">
+        <h3>Appointment Hotline</h3>
+        <p>Our scheduling team is available weekdays 8am-6pm.</p>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </span>
+          +1 (555) 000-0000
+        </a>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </span>
+          View our full calendar
+        </a>
+      </div>
+
+      <div class="contact-method">
+        <h3>Visit Our Clinic</h3>
+        <p>We have multiple locations to serve you better.</p>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </span>
+          Main Clinic: 100 Medical Plaza, Suite 300
+        </a>
+        <a href="#">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+          </span>
+          View all locations
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.classList.contains('dark')) {
+        body.classList.remove('dark');
+      } else {
+        body.classList.add('dark');
+      }
+    }
+  </script>
+</body>
+</html>
